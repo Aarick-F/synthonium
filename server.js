@@ -6,6 +6,7 @@ const passport = require("passport");
 const app = express();
 
 const user = require("./routes/api/user");
+const post = require("./routes/api/post");
 
 const db = require("./config/keys").mongoURI;
 
@@ -27,6 +28,7 @@ require("./config/passport")(passport);
 
 // Use routes
 app.use("/api/user", user);
+app.use("/api/post", post);
 
 const port = process.env.PORT || 5000;
 
