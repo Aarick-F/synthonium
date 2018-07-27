@@ -1,3 +1,7 @@
+import Tone from "tone";
+
+let noteIterator = 0;
+
 class Circle {
   constructor(coords, radius, dx, dy) {
     this.x = coords.x;
@@ -33,15 +37,21 @@ class Circle {
     ctx.stroke();
   }
 
-  update(canvas) {
+  update(canvas, synth, notes) {
     if(this.x + this.radius > canvas.width || this.x - this.radius < 0) {
       this.dx = -this.dx;
       // LOGIC TO PLAY SOUND GOES HERE
+      synth.triggerAttackRelease(notes[noteIterator], "16n");
+      noteIterator++;
+      if(noteIterator >= notes.length) noteIterator = 0;
     }
     this.x += this.dx;
     if(this.y + this.radius > canvas.height || this.y - this.radius < 0) {
       this.dy = -this.dy;
       // LOGIC TO PLAY SOUND GOES HERE
+      synth.triggerAttackRelease(notes[noteIterator], "16n");
+      noteIterator++;
+      if(noteIterator >= notes.length) noteIterator = 0;
     }
     this.y += this.dy;
   }

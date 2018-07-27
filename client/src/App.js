@@ -5,6 +5,8 @@ import './App.css';
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Canvas from "./components/Canvas";
+import SignUp from "./components/SignUp";
+
 
 class App extends Component {
   render() {
@@ -13,6 +15,7 @@ class App extends Component {
         <div className="main">
           <Header />
           <Route exact path="/" component={Canvas} />
+          <Route exact path="/signup" component={SignUp} />
           <Footer />
         </div>
       </Router>
